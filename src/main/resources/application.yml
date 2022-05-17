@@ -1,0 +1,54 @@
+# 发送短信
+customer:
+  phone:
+    secretId: AKIDqUs0rRklW0D9pEPggRwA7oFPIvIPFo67
+    secretKey: mIYWEfqjOnzuXtyqVx96mBJBm68tOcYD
+    smsSdkAppId: 1400631199
+    signName: 短信测试
+    templateId: 1298576
+spring:
+  #redis配置
+  redis:
+    key:
+      prefix:
+        authCode: "portal:authCode:"
+        orderId: "portal:orderId:"
+      expire:
+        authCode: 60 #验证码超过时间
+    host: 120.76.216.233
+    port: 6379
+    database: 0
+    timeout: 10000ms
+
+    lettuce:
+      pool:
+        #最大连接数，默认8
+        max-active: 8
+        #最大连接阻塞等待时间，默认-1
+        max-wait: 10000ms
+        #最大空闲连接，默认8
+        max-idle: 200
+        #最小空闲连接，默认0
+        min-idle: 0
+    password: lh20001211
+  #邮箱配置
+#  mail:
+#    username: lh1348114176@163.com
+#    password: AHUWPEIJEZTAFFVW
+#    host: stmp.163.com
+#    default-encoding: UTF-8
+#    properties:
+#      mail:
+#        smtp:
+#          ssl:
+#            enable:
+#              true
+#    port: 587
+#    protocol: smtps
+  mail:
+      host: smtp.163.com
+      username: lh1348114176@163.com
+      password: AHUWPEIJEZTAFFVW
+      default-encoding: UTF-8
+      port: 465
+      protocol: smtps

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    接收方邮箱号 <input type="text" id="recipient">
+    <input type="button" value="发送验证码" id="yzm">
+    验证码<input type="text" id="code">
+    <input type="submit" value="验证" id="y">
+</div>
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script>
+    /**
+     * 发送验证码
+     */
+    $("#yzm").click(function() {
+        $.ajax({
+            url : "/sendEmail",
+            type : "post",
+            data : {
+                "recipient":$("#recipient").val()
+            },
+            success : function(data) {
+                alert(data)
+            }
+        })
+    })
+    /**
+     * 验证码判断
+     */
+    $("#y").click(function() {
+        $.ajax({
+            url: "/code",
+            type: "post",
+            data: {
+                "recipient": $("#recipient").val(),
+                "code": $("#code").val()
+            },
+            success: function (data) {
+                alert(data)
+            }
+        })
+    })
+</script>
+</body>
+</html>
